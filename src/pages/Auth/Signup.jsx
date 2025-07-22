@@ -5,7 +5,6 @@ import AuthLayout from "../../components/layouts/AuthLayout";
 import Input from "../../components/Inputs/Input";
 import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
 import axiosInstance from "../../utils/axiosInstance";
-import { UserContext } from '../../context/UserContext'
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");
@@ -15,7 +14,7 @@ const Signup = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false)
   
-  const {updateUserData} = useContext(UserContext)
+
 
   const navigate = useNavigate();
   const handleSignup = async (e) => {
@@ -48,7 +47,6 @@ const Signup = () => {
       if(res.data && res.data.success){
         localStorage.setItem("token", res.data.data.accessToken)
         navigate('/dashboard')
-        updateUserData(res.data.data)
       }
     } catch (error) {
       if(error && error.response && error.response.data && error.response.data.message){

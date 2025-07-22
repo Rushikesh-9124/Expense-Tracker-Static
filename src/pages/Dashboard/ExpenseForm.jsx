@@ -7,10 +7,10 @@ import AddExpenseForm from '../../components/Expense/AddExpenseForm'
 import { toast } from 'react-toastify';
 import ExpenseList from '../../components/Expense/ExpenseList'
 import DeleteAlert from '../../components/layouts/DeleteAlert'
-// import { UserContext } from '../../context/userContext'
+import { UserContext } from '../../context/UserContext'
 
 const Expense = () => {
-  // const {getUserData} = useContext(UserContext)
+  const {getUserData} = useContext(UserContext)
   const [openAddExpenseModal, setOpenAddExpenseeModal] = useState(false)
   const [loading, setLoading] = useState(false)
   const [openDeleteAlert, setOpenDeleteAlert] = useState({
@@ -101,7 +101,7 @@ const Expense = () => {
   
   useEffect(() => {
     try {
-      //getUserData();
+      getUserData();
       fetchExpenseDetails()
     } catch (err) {
       console.error("getUserData failed", err);

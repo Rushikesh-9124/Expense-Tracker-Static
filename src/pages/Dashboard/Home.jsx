@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import DashboardLayout from "../../components/layouts/DashboardLayout";
-import { UserContext } from "../../context/userContext";
 import Loading from "../../components/layouts/Loading";
 import { IoMdCard } from "react-icons/io";
 import { addThousandSeparator } from "../../utils/helper";
@@ -17,7 +16,6 @@ import RecentIncome from "../../components/Dashboard/RecentIncome";
 
 
 const Home = () => {
-  const { updateUserData } = useContext(UserContext);
   const navigate = useNavigate();
   const [user, setUser] = useState([]);
 
@@ -38,18 +36,7 @@ const Home = () => {
   };
 
 
-  const getUserData = async () => {
-    try {
-      const res = await axiosInstance.get("/get-user");
-      if (res.data.success) {
-        setUser(res.data.user);
-        updateUserData(res.data.user);
-      }
-    } catch (error) {
-      console.error("Something went wrong!, Please try again!")
-    }
-  };
-
+  
   
 
   useEffect(() => {

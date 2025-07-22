@@ -98,10 +98,16 @@ const Expense = () => {
     }
   }
 
-  useEffect(()=>{
-    getUserData(),
-    fetchExpenseDetails()
-  }, [])
+  
+  useEffect(() => {
+    try {
+      getUserData();
+      fetchExpenseDetails()
+    } catch (err) {
+      console.error("getUserData failed", err);
+    }
+  }, []);
+
   return (
     <DashboardLayout activeMenu="Expense"> 
     <div className="my-5 mx-auto">

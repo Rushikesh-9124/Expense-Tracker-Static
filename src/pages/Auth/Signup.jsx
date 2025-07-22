@@ -5,7 +5,7 @@ import AuthLayout from "../../components/layouts/AuthLayout";
 import Input from "../../components/Inputs/Input";
 import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
 import axiosInstance from "../../utils/axiosInstance";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from '../../context/UserContext'
 
 const Signup = () => {
   const [fullName, setFullName] = useState("");
